@@ -1,0 +1,18 @@
+[
+    {
+        "code": "ACPL00006",
+        "name": "Vikas Autowheels",
+        "email": "Insurancevaw@gmail.com",
+        "make": "Hero",
+        "subDealers": [
+            {
+                "code": "ACPL00308",
+                "name": "Dev Automobile (VAW) - Gonda"
+            },
+            {
+                "code": "ACPL00132",
+                "name": "VAW - Agra Road"
+            }
+        ]
+    }
+]
