@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import updateTask from './updateTasks.js';
 const listID = '187255280';
 const clickUpToken = 'pk_55254401_CWSAA0C7LHBQ8BRNFQUCO06EDGY8GM5I';
+import {currentMonthSheet} from '../constants/constants.js';
 
 const createCard = async (masterDealers) => {
 
@@ -58,7 +59,7 @@ const createCard = async (masterDealers) => {
                     'Dealer ID': masterDealers[i].id,
                     'Dealer Email': masterDealers[i].email,
                     'Dealer Name': masterDealers[i].name,
-                    'Month': 'June 2022',
+                    'Month': currentMonthSheet,
                     'Payment Terms': finalPaymentTermString
                 }, null, 2);
 
@@ -68,7 +69,7 @@ const createCard = async (masterDealers) => {
                     name: masterDealers[i].name,
                     text_content: textContent,
                     status: masterDealers[i].combined_Balance >= 0 ? 'Pending' : 'Outstanding',
-                    tags: [`June 2022`, masterDealers[i].make]
+                    tags: [currentMonthSheet, masterDealers[i].make]
                 }
 
                 for (let j = 0; j < masterDealers[i].paymentTerms.length; j++) {
@@ -105,7 +106,7 @@ const createCard = async (masterDealers) => {
             // console.log(data[3]);
             for (let i = 0; i < data.length; i++) {
                 // let name = data[i].name.split('-');
-                const tasksDetails = { name: data[i].name, taskID: data[i].id, month: 'June 2022', textContent: JSON.parse(data[i].text_content) }
+                const tasksDetails = { name: data[i].name, taskID: data[i].id, month: currentMonthSheet, textContent: JSON.parse(data[i].text_content) }
                 tasks.push(tasksDetails);
             };
 

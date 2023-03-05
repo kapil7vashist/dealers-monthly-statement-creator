@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { google } from 'googleapis'
 import createCard from "./createClickUpCard.js";
-
+import { currentMonthSheet } from '../constants/constants.js';
 // const files = fs.readdirSync("./sheets");
 
 const googleAuth = async () => {
@@ -29,14 +29,14 @@ const upload = async (foldersObj, masterDealers) => {
         let fileUploads = [];
         for (let i = start; (i < end && i < masterDealers.length); i++) {
             let fileMetadata = {
-                name: `${masterDealers[i].name} - June 2022.xlsx`,
+                name: `${masterDealers[i].name} - ${currentMonthSheet}.xlsx`,
                 mimeType: 'application/vnd.google-apps.spreadsheet',
                 parents: [`${foldersObj[i].folderID}`]
             };
 
             let media = {
                 mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                body: fs.createReadStream(`./sheets/${masterDealers[i].name} - June 2022.xlsx`)
+                body: fs.createReadStream(`./sheets/${masterDealers[i].name} - ${currentMonthSheet}.xlsx`)
             };
 
             let newFile = googleDrive.files.create({
@@ -51,7 +51,7 @@ const upload = async (foldersObj, masterDealers) => {
         await Promise.all(fileUploads).then((items) => {
             for (let i = 0; i < items.length; i++) {
                 for (let j = 0; j < masterDealers.length; j++) {
-                    if (`${items[i].data.name}.xlsx` == `${masterDealers[j].name} - June 2022.xlsx`) {
+                    if (`${items[i].data.name}.xlsx` == `${masterDealers[j].name} - ${currentMonthSheet}.xlsx`) {
                         count++;
                         fs.unlinkSync(`./sheets/${items[i].data.name}.xlsx`)
                         masterDealers[j] = { folderID: items[i].data.parents[0], uploaded: true, ...masterDealers[j] }
@@ -105,7 +105,7 @@ export default upload;
 
 //     console.log(`Upload ID: ${id} & Uploaded Value: ${masterDealers[i].uploaded}`)
 
-//     fs.unlinkSync(`./sheets/${masterDealers[i].name}- June 2022.xlsx`, (err) => {
+//     fs.unlinkSync(`./sheets/${masterDealers[i].name}- October 2022.xlsx`, (err) => {
 //         if (err) {
 //             console.log('Error in Unlink ', err.message)
 //         }
@@ -126,7 +126,7 @@ export default upload;
 // .then((file) => {
 //     masterDealers[i] = { id: file.data.id, uploaded: true, ...masterDealers[i] }
 //     console.log(`Upload ID: ${file.data.id}`)
-//     fs.unlinkSync(`./sheets/${masterDealers[i].name}- June 2022.xlsx`, (err) => {
+//     fs.unlinkSync(`./sheets/${masterDealers[i].name}- October 2022.xlsx`, (err) => {
 //         if (err) {
 //             console.log('Can\'t delete File');
 //         }
@@ -142,7 +142,7 @@ export default upload;
 
 // for (let i = 0; i < items.length; i++) {
 //     for (let j = start; j < masterDealers.length; j++) {
-//         if (`${items[i].data.name}.xlsx` == `${masterDealers[j].name}- June 2022.xlsx`) {
+//         if (`${items[i].data.name}.xlsx` == `${masterDealers[j].name}- October 2022.xlsx`) {
 //             masterDealers[j] = { sheetID: items[i].data.id, uploaded: true, ...masterDealers[j] }
 //             console.log(items[i].data.id);
 //             console.log(masterDealers[j]);

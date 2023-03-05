@@ -1,4 +1,5 @@
 import xlsx from "xlsx";
+import { currentMonthSheet } from '../constants/constants.js';
 const createSheet = async (worksheetData, masterDealer, paymentTerms, masterDealers) => {
 
     masterDealer = { paymentTerms, ...masterDealer }
@@ -147,7 +148,7 @@ const createSheet = async (worksheetData, masterDealer, paymentTerms, masterDeal
 
     xlsx.utils.book_append_sheet(wb, worksheet, 'Summary');
     xlsx.utils.book_append_sheet(wb, policyWorksheet, 'Policies');
-    xlsx.writeFile(wb, `./sheets/${masterDealer.name} - June 2022.xlsx`);
+    xlsx.writeFile(wb, `./sheets/${masterDealer.name} - ${currentMonthSheet}.xlsx`);
 
 
     // console.log(masterDealer);

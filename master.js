@@ -8,9 +8,6 @@ const Dealers = await dealersList();
 const policyData = await policiesList();
 
 
-
-
-
 const dealersData = Dealers[0];
 const cbsData = Dealers[1];
 
@@ -45,7 +42,7 @@ const findMasterDealer = () => {
     }
     console.log('All Files Created')
     // After Files for every Master Dealer has been created, 'createFolders' Function Calls for creation of Google Drive Folders
-    createFolder(masterDealers)
+    createFolder(masterDealers);
 }
 
 

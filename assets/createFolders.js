@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 // import fs from "fs";
 import upload from "./driveUpload.js";
+import { folderId } from '../constants/constants.js';
 
 const googleAuth = async () => {
     let auth = new google.auth.GoogleAuth({
@@ -33,7 +34,7 @@ const createFolder = async (masterDealers) => {
             let fileMetadata = {
                 name: `${masterDealers[i].name}`,
                 mimeType: 'application/vnd.google-apps.folder',
-                parents: ['1AT_zCbTsTZFpFciRRP-3L3c-ITbdu7RP']
+                parents: [folderId]
             };
 
             const newReq = googleDrive.files.create({
