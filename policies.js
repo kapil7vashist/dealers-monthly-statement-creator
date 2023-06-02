@@ -28,14 +28,18 @@ const policiesList = async () => {
 	const sheet1Values = getRowsSheet1.data.values;
 	const monthlyPolicies = [];
 
+	console.log(currentMonthSheet);
 	for (let i = 1; i < sheet1Values.length; i++) {
 		if (sheet1Values[i][80] == 'Active' && sheet1Values[i][70] == currentMonthSheet) {
 			monthlyPolicies.push(sheet1Values[i]);
 		}
 	};
 
+	// console.log(monthlyPolicies.length);
 	return monthlyPolicies;
 
 }
+
+// await policiesList();
 
 export default policiesList;

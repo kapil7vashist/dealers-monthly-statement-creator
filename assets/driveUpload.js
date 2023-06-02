@@ -76,7 +76,7 @@ const upload = async (foldersObj, masterDealers) => {
         console.log(masterDealers);
     }
 
-    createCard(masterDealers);
+    // createCard(masterDealers);
 }
 
 

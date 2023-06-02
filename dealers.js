@@ -1,7 +1,7 @@
 import { google } from "googleapis"
 
 let auth, googleSheets;
-const dealerSheetID = '14Ry65zqsm_PE16ZKVU_B_CCM8al3fsQ49W6RXSFhSB4';
+const dealerSheetID = '1EUZ1ecWS49UiYLUdnF_6GDZF5JBk1ms1hr-t5yoptS4';
 
 const dealersList = async () => {
     auth = new google.auth.GoogleAuth({
