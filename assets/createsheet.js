@@ -139,7 +139,7 @@ const createSheet = async (worksheetData, masterDealer, paymentTerms, masterDeal
 
 
     summaryData.push(['', '', 'Grand Total', { f: `SUM(${totalFormula1})` }, { f: `SUM(${totalFormula2})` }, { f: `SUM(${totalFormula3})` }])
-
+    
 
     const wb = xlsx.utils.book_new();
     const worksheet = xlsx.utils.aoa_to_sheet(summaryData);
