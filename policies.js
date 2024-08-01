@@ -38,11 +38,11 @@ const policiesList = async () => {
 		}
 	};
 
-	console.log(monthlyPolicies.length);
+	// console.log(monthlyPolicies.length);
 	// console.log(currentMonthSheet);
-	// return monthlyPolicies;
+	return monthlyPolicies;
 
 }
-policiesList();
+// policiesList();
 
-// export default policiesList;
+export default policiesList;
